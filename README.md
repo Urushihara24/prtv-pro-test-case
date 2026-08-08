@@ -1,4 +1,4 @@
-# 🎯 PRTV.pro — Comprehensive QA Case Study
+# 🎯 PRTV.pro — Comprehensive QA Case 
 
 ## 📌 Что это
 
