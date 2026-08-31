@@ -1,5 +1,13 @@
 # 🎯 PRTV.pro — Comprehensive QA Case 
 
+> Release-readiness assessment of a production SaaS platform across web, mobile and Android TV, with coverage of billing, integrations and data migration.
+
+| Coverage | Execution | Result |
+|---|---|---|
+| 18 of 20 modules across 5 environments | 228 test cases executed | 45 defects documented with business impact and supporting analysis |
+
+**Start here:** [planning](PLANNING/) · [analytics](ANALYTICS/) · [test scripts](SCRIPTS/) · [key findings](#-ключевые-находки)
+
 ## 📌 Что это
 
 **Реальный кейс тестирования** SaaS-платформы для создания слайд-шоу на Smart TV.  
