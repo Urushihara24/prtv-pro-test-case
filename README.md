@@ -1,306 +1,278 @@
-# 🎯 PRTV.pro — Comprehensive QA Case 
+# 🎯 PRTV.pro — Comprehensive QA Case
 
 > Release-readiness assessment of a production SaaS platform across web, mobile and Android TV, with coverage of billing, integrations and data migration.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Web-Chrome_DevTools-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Chrome DevTools">
+  <img src="https://img.shields.io/badge/Mobile-iOS_%2B_Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Mobile">
+  <img src="https://img.shields.io/badge/Android_TV-Tested-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android TV">
+  <img src="https://img.shields.io/badge/Python-Reporting_Automation-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+</p>
 
 | Coverage | Execution | Result |
 |---|---|---|
 | 18 of 20 modules across 5 environments | 228 test cases executed | 45 defects documented with business impact and supporting analysis |
 
-**Start here:** [planning](PLANNING/) · [analytics](ANALYTICS/) · [test scripts](SCRIPTS/) · [key findings](#-ключевые-находки)
+**Start here:** [planning](PLANNING/) · [analytics](ANALYTICS/) · [test scripts](SCRIPTS/) · [key findings](#-key-findings)
 
-## 📌 Что это
+## 📌 What this is
 
-**Реальный кейс тестирования** SaaS-платформы для создания слайд-шоу на Smart TV.  
-Не учебный проект, не шаблон — **полноценная QA-работа** с реальной продуктовой командой.
+A **real QA engagement** for a SaaS platform used to build Smart TV slideshows.  
+Not a tutorial project and not a generic template — this repository documents **full practical QA work** with a real product team.
 
-**Период**: Июль–Август 2026  
-**Роль**: QA Engineer (единственный тестировщик)  
-**Продукт**: prtv.pro — онлайн-конструктор слайд-шоу для Smart TV
-
----
-
-## 🎯 Контекст проекта
-
-### Что такое PRTV.pro
-SaaS-платформа для бизнеса (рестораны, отели, ритейл), позволяющая создавать цифровые меню и информационные экраны на Smart TV.
-
-**Ключевые модули**:
-- Редактор слайд-шоу (drag-and-drop)
-- Интеграции с POS-системами (R_Keeper, iiko, QuickResto)
-- Информеры (ВК, Telegram, RSS, погода, курсы валют)
-- Биллинг и лицензии
-- ТВ-приложение (Android TV)
-- Мобильная версия
-- Миграция данных между доменами
-
-### Бизнес-цели тестирования
-1. **Подготовить продукт к релизу** — выявить критические баги
-2. **Оценить качество мобильной версии** — проверить адаптивность
-3. **Проверить интеграции** — убедиться в работоспособности с реальными POS
-4. **Протестировать миграцию** — данные не должны теряться при переносе
+**Period:** July–August 2026  
+**Role:** QA Engineer, sole tester  
+**Product:** PRTV.pro, an online Smart TV slideshow builder
 
 ---
 
-## 📊 Результаты в цифрах
+## 🎯 Project context
 
-### Охват тестирования
-| Метрика | Значение |
+### What PRTV.pro is
+A SaaS platform for restaurants, hotels, and retail businesses to create digital menus and information screens for Smart TV.
+
+**Core modules:**
+- Drag-and-drop slideshow editor
+- POS integrations: R_Keeper, iiko, QuickResto
+- Informers/widgets: VK, Telegram, RSS, weather, exchange rates
+- Billing and licenses
+- Android TV application
+- Mobile version
+- Data migration between domains
+
+### Business goals of testing
+1. **Prepare the product for release** by identifying high-impact defects.
+2. **Assess mobile quality** and responsive behavior.
+3. **Validate integrations** against real external systems where access was available.
+4. **Validate migration** so data is not lost during transfer.
+
+---
+
+## 📊 Results in numbers
+
+### Test coverage
+| Metric | Value |
 |---|---|
-| Тест-кейсов написано | 228 |
-| Выполнено тест-кейсов | 228 (100%) |
-| Модулей покрыто | 18 из 20 (90%) |
-| Окружений протестировано | 5 (Chrome, Yandex, Mobile iOS, Mobile Android, TV) |
+| Test cases written | 228 |
+| Test cases executed | 228, 100% |
+| Modules covered | 18 of 20, 90% |
+| Environments tested | 5: Chrome, Yandex Browser, Mobile iOS, Mobile Android, TV |
 
-### Качество продукта
-| Статус | Количество | Процент |
-|---|---|---|
+### Product quality snapshot
+| Status | Count | Percentage |
+|---|---:|---:|
 | ✅ Passed | 177 | 77.6% |
 | ❌ Failed | 27 | 11.8% |
 | 🚫 Blocked | 5 | 2.2% |
 | ⏸️ Not Tested | 19 | 8.3% |
 
-### Найденные дефекты
-| Severity | Количество | Процент |
-|---|---|---|
+### Defects found
+| Severity | Count | Percentage |
+|---|---:|---:|
 | 🔴 High | 18 | 40% |
 | 🟡 Medium | 14 | 31% |
 | 🟢 Low | 13 | 29% |
-| 💡 IMP (улучшения) | 4 | — |
-| **Итого** | **45** | **100%** |
+| 💡 IMP, improvements | 4 | — |
+| **Total** | **45** | **100%** |
 
 ---
 
-## 🔍 Что было протестировано
+## 🔍 What was tested
 
-### Функциональное тестирование
-- ✅ Навигация и авторизация (регистрация, вход, восстановление пароля)
-- ✅ Редактор слайд-шоу (225+ тест-кейсов)
-- ✅ Информеры (часы, погода, курсы валют, пробки, соцсети, RSS)
-- ✅ Биллинг и лицензии (оплата картой, QR/СБП, продление)
-- ✅ Потоки и подборки (расписание, пересечения, drag'n'drop)
-- ✅ Шаблоны (копирование, покупка, фильтрация)
-- ✅ Миграция данных (prtv.su → prtv.pro)
+### Functional testing
+- ✅ Navigation and authentication: registration, login, password recovery
+- ✅ Slideshow editor and content behavior
+- ✅ Informers: clock, weather, exchange rates, traffic, social networks, RSS
+- ✅ Billing and licenses: card, QR/SBP, renewal
+- ✅ Streams and collections: schedules, overlaps, drag-and-drop
+- ✅ Templates: copying, purchasing, filtering
+- ✅ Data migration: `prtv.su → prtv.pro`
 
-### Интеграционное тестирование
-- ✅ VK OAuth (подключение групп)
-- ✅ Google OAuth (Google Диск)
-- ✅ Ресторанные POS (R_Keeper, QuickResto, iiko)
-- ✅ Социальные сети (ВК, Telegram, Одноклассники)
-- ✅ RSS-ленты (lenta.ru)
+### Integration testing
+- ✅ VK OAuth and group connection
+- ✅ Google OAuth and Google Drive
+- ✅ Restaurant POS integrations: R_Keeper, QuickResto, iiko
+- ✅ Social integrations: VK, Telegram, Odnoklassniki
+- ✅ RSS feeds such as lenta.ru
 
-### Кросс-платформенное тестирование
-- ✅ Десктоп (Chrome 151, Yandex Browser 26.6)
-- ✅ Мобильная версия (iOS Safari, Android Chrome)
-- ✅ ТВ-приложение (TCL Smart TV, prtv-2.0.102)
+### Cross-platform testing
+- ✅ Desktop: Chrome 151, Yandex Browser 26.6
+- ✅ Mobile: iOS Safari, Android Chrome
+- ✅ TV: TCL Smart TV, application version `prtv-2.0.102`
 
-### Нефункциональное тестирование
-- ✅ UX/UI (адаптивность, контраст, локализация)
-- ✅ Безопасность (XSS, SQL-инъекции)
-- ✅ Производительность (50+ слайдов в СШ)
-- ✅ Совместимость (разные браузеры)
+### Non-functional testing
+- ✅ UX/UI: responsiveness, contrast, localization
+- ✅ Basic security checks: XSS and SQL-injection attempts
+- ✅ Performance-oriented checks: 50+ slides in one slideshow
+- ✅ Browser compatibility
 
 ---
 
-## 🐛 Ключевые находки
+## 🐛 Key findings
 
-### Critical Blockers (High Severity)
+### Critical blockers — High Severity
 
-#### 1. Интеграции не работают
+#### 1. Integrations do not work reliably
 **PRD-002, PRD-003, PRD-004, PRD-039, PRD-040**
-- Google OAuth не подключается после полного флоу
-- Ресторанные меню недоступны (R_Keeper, QuickResto, iiko)
-- Соцсети/RSS не отдают контент (ВК, Telegram, RSS)
-- Нет валидации credentials (принимает любые данные)
+- Google OAuth does not complete successfully after the full flow.
+- Restaurant menus are unavailable through R_Keeper, QuickResto, and iiko.
+- Social/RSS integrations fail to return content.
+- Credential validation is missing and arbitrary values can be accepted.
 
-**Бизнес-влияние**: Ключевая функция для ресторанного сегмента нерабочая.
+**Business impact:** a key feature for restaurant customers is unusable.
 
-#### 2. Мобильная версия непригодна
+#### 2. Mobile version is not practically usable
 **PRD-010, PRD-011, PRD-046**
-- Главная страница не адаптирована
-- Редактор функционально сломан (виджеты не настраиваются)
-- Текст и кнопки выходят за границы
+- Main page is not properly responsive.
+- Editor is functionally broken on mobile; widgets cannot be configured reliably.
+- Text and controls overflow their containers.
 
-**Бизнес-влияние**: 50% мобильных пользователей не смогут использовать продукт.
+**Business impact:** mobile users cannot reliably use the product.
 
-#### 3. ТВ-приложение не запускает СШ
+#### 3. TV application does not launch slideshows
 **PRD-008, PRD-009**
-- СШ по номеру не открывается
-- Фоновое СШ и СШ с паролем не стартуют
-- Потоки не воспроизводятся
+- Slideshow by ID does not open.
+- Background/password-protected slideshow does not start.
+- Streams do not play.
 
-**Бизнес-влияние**: Основной сценарий использования (ТВ) не работает.
+**Business impact:** the primary TV consumption scenario is broken.
 
-#### 4. Форум в циклическом редиректе
+#### 4. Forum is trapped in a redirect loop
 **PRD-007**
-- prtv.pro → prtv.su/forum → prtv.pro → prtv.su (бесконечный цикл)
+- `prtv.pro → prtv.su/forum → prtv.pro → prtv.su` indefinitely.
 
-**Бизнес-влияние**: Раздел поддержки недоступен.
+**Business impact:** the support/community section is inaccessible.
 
 ---
 
-## 📈 Аналитика
+## 📈 Analytics
 
-### Распределение багов по модулям
-Интеграции:     ████████████████████ 10 багов (22%)
-
-Мобильная:      ██████████████ 6 багов (13%)
-
-Редактор:       ████████████ 5 багов (11%)
-
-ТВ:             ████████ 4 багов (9%)
-
-Биллинг:        ██████ 3 багов (7%)
-
-Авторизация:    ████ 2 багов (4%)
-
-Прочее:         ███████████████████ 15 багов (34%)
-
-
-
+### Defect distribution by module
+```text
+Integrations:     ████████████████████ 10 defects (22%)
+Mobile:           ██████████████       6 defects (13%)
+Editor:           ████████████         5 defects (11%)
+TV:               ████████             4 defects (9%)
+Billing:          ██████               3 defects (7%)
+Authentication:   ████                 2 defects (4%)
+Other:            ███████████████████  15 defects (34%)
+```
 
 ### Root Cause Analysis
-**Почему так много багов в интеграциях?**
-- Отсутствие валидации на стороне бэкенда
-- Неправильная обработка OAuth-токенов
-- Отсутствие моков для тестирования
+**Why were integrations so defect-heavy?**
+- Missing backend validation
+- Incorrect OAuth-token handling
+- No mocks available for integration testing
 
-**Почему мобильная версия сломана?**
-- Адаптивность не была приоритетом в разработке
-- Нет мобильного QA в команде
-- CSS-стили не пересчитываются для ≤768px
+**Why was mobile quality poor?**
+- Responsive design was not treated as a first-class development target
+- No dedicated mobile QA coverage before this run
+- Styles did not adapt reliably at ≤768 px
 
-**Почему ТВ-приложение не работает?**
-- Изменения в API не синхронизированы с ТВ-клиентом
-- Нет автоматических тестов для ТВ
-- Ручное тестирование ТВ не проводилось
+**Why did the TV app fail?**
+- API changes were not synchronized with the TV client
+- No automated TV regression coverage
+- TV checks had not been executed regularly
 
-[Подробнее → ANALYTICS/root-cause-analysis.md]
-
----
-
-## 🛠 Методология
-
-### Тест-дизайн
-- **Классы эквивалентности**: валидные/невалидные данные
-- **Граничные значения**: 10 МБ изображения, 1000+ символов текста, 50+ слайдов
-- **Pairwise**: комбинации настроек виджетов
-- **State Transition**: статусы лицензий, потоков
-
-### Приоритизация багов
-Использовался фреймворк **Severity × Priority**:
-- **High × High**: блокирует основной сценарий (релиз невозможен)
-- **High × Medium**: критично, но есть workaround
-- **Medium × Medium**: влияет на UX, но не блокирует
-- **Low × Low**: косметические проблемы
-
-[Подробнее → METHODOLOGY/priority-framework.md]
+[Read the detailed analysis → ANALYTICS/root-cause-analysis.md]
 
 ---
 
-## 📁 Структура репозитория
-── PLANNING/          # Как планировалось тестирование
+## 🛠 Methodology
 
-├── TEST-CASES/        # 228 тест-кейсов
+### Test design
+- **Equivalence partitioning:** valid vs invalid data
+- **Boundary values:** 10 MB images, 1000+ characters, 50+ slides
+- **Pairwise:** widget-setting combinations
+- **State Transition:** license and stream statuses
 
-├── BUG-REPORTS/       # 45 баг-репортов
-
-├── ANALYTICS/         # Аналитика и отчёты
-
-├── REPORTS/           # Финальная документация
-
-├── EVIDENCE/          # Скриншоты и видео
-
-├── SCRIPTS/           # Автоматизация (Python)
-
-├── METHODOLOGY/       # Методология
-
-└── INSIGHTS/          # Инсайты и выводы
-
-
-Каждая папка содержит **не просто файлы**, а **обоснованные артефакты**:
-- Почему выбран именно этот скоуп?
-- Почему именно эти тест-кейсы?
-- Почему баги приоритизированы именно так?
+### Defect prioritization
+The project used a **Severity × Priority** model:
+- **High × High:** blocks a core scenario; release cannot proceed safely
+- **High × Medium:** severe impact with an available workaround
+- **Medium × Medium:** affects UX but does not fully block the user
+- **Low × Low:** cosmetic or low-impact issues
 
 ---
 
-## 🎓 Навыки, продемонстрированные в кейсе
+## 📁 Repository structure
+
+```text
+PLANNING/          # Test strategy and planning
+ANALYTICS/         # Root-cause analysis and conclusions
+SCRIPTS/           # Python reporting automation
+README.md          # Case overview
+```
+
+The artifacts are intended to answer not only *what* was tested, but *why* scope and priorities were selected.
+
+---
+
+## 🎓 Skills demonstrated
 
 ### Hard Skills
-- [x] Тест-дизайн (классы эквивалентности, граничные значения, pairwise)
-- [x] Написание тест-кейсов с предусловиями и ОР
-- [x] Локализация и описание багов с шагами воспроизведения
-- [x] Работа с доказательствами (скриншоты, видео, DevTools)
-- [x] Тестирование интеграций (OAuth, REST API)
-- [x] Кросс-платформенное тестирование (Web/Mobile/TV)
-- [x] Автоматизация отчётности (Python)
+- [x] Test design: equivalence classes, boundaries, pairwise
+- [x] Test cases with preconditions and expected results
+- [x] Defect localization and reproducible bug reporting
+- [x] Evidence work using screenshots, video, and DevTools
+- [x] Integration testing across OAuth and REST-backed flows
+- [x] Cross-platform testing across Web / Mobile / TV
+- [x] Reporting automation with Python
 
 ### Soft Skills
-- [x] Приоритизация задач (что тестировать первым)
-- [x] Коммуникация с разработкой (баг-репорты)
-- [x] Работа с неопределённостью (неполные требования)
-- [x] Системное мышление (анализ причин, а не симптомов)
-- [x] Бизнес-ориентированность (влияние на пользователя)
+- [x] Risk-based prioritization
+- [x] Communication with development through actionable defect reports
+- [x] Working with incomplete requirements
+- [x] Systems thinking: looking for defect patterns rather than isolated symptoms
+- [x] Business-impact reasoning
 
 ---
 
-## 💡 Что я узнал
+## 💡 What I learned
 
-### Технические инсайты
-1. **Интеграции — самая хрупкая часть**  
-   22% всех багов связаны с внешними сервисами. Нужны моки и контрактное тестирование.
+### Technical insights
+1. **Integrations are the most fragile area.** 22% of the defects were related to external services; mocks and contract testing would reduce this risk.
+2. **Mobile is effectively a separate product surface.** Desktop responsiveness alone is not a substitute for dedicated mobile testing.
+3. **TV requires its own testing approach.** Debugging and iteration differ significantly from browser-based products.
 
-2. **Мобильная версия — это отдельный продукт**  
-   Нельзя просто "адаптировать" десктоп. Нужна отдельная стратегия тестирования.
-
-3. **ТВ-приложение требует особого подхода**  
-   Нет DevTools, нет горячих перезагрузок. Нужны специфичные инструменты.
-
-### Процессные инсайты
-1. **Раннее тестирование экономит время**  
-   Если бы интеграции тестировались на этапе разработки, 10 багов были бы найдены раньше.
-
-2. **Автоматизация отчётности критична**  
-   Python-скрипты сэкономили ~10 часов ручной работы.
-
-3. **Документация — это не бюрократия**  
-   Чёткие тест-кейсы помогли не пропустить важные сценарии.
-
-[Подробнее → INSIGHTS/lessons-learned.md]
+### Process insights
+1. **Earlier testing reduces rework.** The integration defects could have been detected closer to implementation.
+2. **Reporting automation matters.** Python scripts saved approximately 10 hours of manual reporting work.
+3. **Documentation prevents coverage gaps.** Structured cases helped keep a wide product surface under control.
 
 ---
 
-## 🚀 Как использовать этот кейс
+## 🚀 How to use this case
 
-### Для рекрутеров/тимлидов
-1. Откройте **README.md** — увидите общую картину
-2. Перейдите в **ANALYTICS/** — оцените глубину аналитики
-3. Посмотрите **EVIDENCE/** — убедитесь, что это реальная работа
-4. Изучите **METHODOLOGY/** — оцените системный подход
+### For recruiters / team leads
+1. Start with **README.md** for the overview.
+2. Open **ANALYTICS/** for deeper reasoning.
+3. Review **PLANNING/** for the testing strategy.
+4. Review **SCRIPTS/** for reporting automation.
 
-### Для других QA-инженеров
-1. Изучите **TEST-CASES/** — как структурированы тест-кейсы
-2. Посмотрите **SCRIPTS/** — автоматизация отчётности
-3. Прочитайте **INSIGHTS/** — что можно улучшить
-
----
-
-## 📄 Лицензия
-
-MIT License — используйте материалы в образовательных целях.
+### For other QA engineers
+1. Review **PLANNING/** for risk-based scope decisions.
+2. Review **SCRIPTS/** for report automation.
+3. Review **ANALYTICS/** for RCA structure.
 
 ---
 
-**Автор**: Всеволод  
-**Дата**: Август 2026  
-**Контакты**: @urushihara24
+## 📄 License
+
+MIT License — materials may be reused for educational purposes.
 
 ---
 
-## 🙏 Благодарности
-
-Спасибо продуктовой команде PRTV.pro за возможность провести тестирование и поделиться опытом.
+**Author:** Vsevolod  
+**Date:** August 2026  
+**Contact:** @urushihara24
 
 ---
 
-*Этот репозиторий — не шаблон, а реальный кейс. Если у вас есть вопросы — пишите!*
+## 🙏 Acknowledgements
+
+Thanks to the PRTV.pro product team for the opportunity to perform the testing and document the experience.
+
+---
+
+*This repository documents a real QA engagement rather than a generic template. Questions and feedback are welcome.*
