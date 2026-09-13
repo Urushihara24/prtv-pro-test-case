@@ -1,164 +1,164 @@
-# Стратегия тестирования PRTV.pro
+# PRTV.pro Test Strategy
 
-## 🎯 Цели тестирования
+## 🎯 Testing objectives
 
-### Бизнес-цели
-1. Подготовить продукт к публичному релизу
-2. Оценить готовность мобильной версии
-3. Проверить работоспособность интеграций с POS-системами
-4. Убедиться в корректности миграции данных
+### Business objectives
+1. Prepare the product for public release.
+2. Assess mobile-version readiness.
+3. Validate POS-system integrations.
+4. Verify data migration correctness.
 
-### Технические цели
-1. Покрыть функциональное тестирование 18 модулей
-2. Протестировать кросс-платформенность (Web/Mobile/TV)
-3. Выявить критические баги до релиза
-4. Оценить качество кода через количество дефектов
-
----
-
-## 📋 Скоуп тестирования
-
-### В скоупе
-✅ Навигация и авторизация  
-✅ Редактор слайд-шоу  
-✅ Информеры (часы, погода, соцсети, RSS)  
-✅ Биллинг и лицензии  
-✅ Потоки и подборки  
-✅ Шаблоны  
-✅ Миграция данных  
-✅ Мобильная версия  
-✅ ТВ-приложение  
-
-### Вне скоупа
-⚠️ Админ-панель (нет прав администратора)  
-⚠️ Платные шаблоны (нет тестовой оплаты)  
-⚠️ Нагрузочное тестирование (нет инструментов)  
-⚠️ Тестирование безопасности (глубокое)  
-
-### Обоснование исключений
-- **Админ-панель**: требует отдельных прав, которые не были предоставлены
-- **Платные шаблоны**: требует реальной оплаты, что невозможно в тестовой среде
-- **Нагрузочное тестирование**: выходит за рамки функционального тестирования
-- **Безопасность**: требует специализированных инструментов (OWASP ZAP, Burp Suite)
+### Technical objectives
+1. Cover functional testing across 18 modules.
+2. Validate cross-platform behavior across Web, Mobile, and TV.
+3. Identify release-blocking defects before launch.
+4. Use defect density and distribution as a quality signal.
 
 ---
 
-## 🎨 Подход к тестированию
+## 📋 Test scope
 
-### Уровни тестирования
-1. **Smoke Testing** — базовая работоспособность (10% TC)
-2. **Functional Testing** — проверка функциональности (70% TC)
-3. **Negative Testing** — проверка обработки ошибок (15% TC)
-4. **Exploratory Testing** — исследование границ (5% TC)
+### In scope
+✅ Navigation and authentication  
+✅ Slideshow editor  
+✅ Informers/widgets: clock, weather, social networks, RSS  
+✅ Billing and licenses  
+✅ Streams and collections  
+✅ Templates  
+✅ Data migration  
+✅ Mobile version  
+✅ TV application
 
-### Типы тестирования
-- **Функциональное**: проверка бизнес-логики
-- **Негативное**: проверка обработки ошибок
-- **UX/UI**: проверка интерфейса
-- **Кросс-браузерное**: Chrome, Yandex Browser
-- **Кросс-платформенное**: Desktop, Mobile, TV
-- **Интеграционное**: проверка внешних сервисов
+### Out of scope
+⚠️ Admin panel because administrator permissions were not provided  
+⚠️ Paid templates because no safe test-payment path was available  
+⚠️ Load testing because dedicated tooling was not available  
+⚠️ Deep security testing
 
----
-
-## 📊 Метрики успеха
-
-### Количественные метрики
-- **Coverage**: ≥80% модулей покрыто тестами
-- **Pass Rate**: ≥75% тест-кейсов пройдено
-- **Critical Bugs**: 0 High-багов в основных сценариях
-- **Blocked TC**: ≤5% заблокированных тест-кейсов
-
-### Качественные метрики
-- Все критические баги задокументированы
-- Все баги имеют доказательства (скриншоты/видео)
-- Отчёт подготовлен для стейкхолдеров
-- Рекомендации по улучшению сформулированы
+### Exclusion rationale
+- **Admin panel:** requires permissions that were not provided.
+- **Paid templates:** requires a real payment not appropriate for the test environment.
+- **Load testing:** outside the functional-testing scope of the engagement.
+- **Security:** deeper assessment would require specialized tooling such as OWASP ZAP or Burp Suite.
 
 ---
 
-## 🗓 План тестирования
+## 🎨 Testing approach
 
-### Итерация 1: Базовое функциональное тестирование
-**Длительность**: 5 дней  
-**Фокус**: Навигация, авторизация, редактор, биллинг  
-**Результат**: 150 тест-кейсов, 30 багов
+### Testing levels
+1. **Smoke Testing** — baseline viability, approximately 10% of cases.
+2. **Functional Testing** — feature validation, approximately 70%.
+3. **Negative Testing** — error handling and invalid inputs, approximately 15%.
+4. **Exploratory Testing** — boundary exploration, approximately 5%.
 
-### Итерация 2: Интеграции и мобильная версия
-**Длительность**: 3 дня  
-**Фокус**: Интеграции (VK, Google, POS), мобильная версия  
-**Результат**: 50 тест-кейсов, 12 багов
-
-### Итерация 3: ТВ и миграция
-**Длительность**: 2 дня  
-**Фокус**: ТВ-приложение, миграция данных  
-**Результат**: 28 тест-кейсов, 3 бага
-
-### Итерация 4: Отчётность
-**Длительность**: 2 дня  
-**Фокус**: Анализ, отчёт, рекомендации  
-**Результат**: Финальный отчёт, 45 багов
+### Testing types
+- **Functional:** business logic.
+- **Negative:** error handling.
+- **UX/UI:** interface behavior and usability.
+- **Cross-browser:** Chrome and Yandex Browser.
+- **Cross-platform:** Desktop, Mobile, TV.
+- **Integration:** external-service interactions.
 
 ---
 
-## 🛠 Инструменты
+## 📊 Success metrics
 
-### Тестирование
-- **Браузеры**: Chrome 151, Yandex Browser 26.6
-- **Мобильные**: iOS Safari, Android Chrome
-- **ТВ**: TCL Smart TV, prtv-2.0.102
-- **DevTools**: Chrome DevTools, Network tab, Console
+### Quantitative metrics
+- **Coverage:** ≥80% of modules covered by tests.
+- **Pass Rate:** ≥75% of executed test cases pass.
+- **Critical Bugs:** 0 High-severity defects in core scenarios.
+- **Blocked TC:** ≤5% of cases blocked.
 
-### Баг-трекинг
-- **Система**: Кастомная (PRD — Product Defect Report)
-- **Формат**: Excel + Google Drive (для вложений)
-- **Структура**: ID, Название, Severity, Priority, Шаги, ОР, ФР, Вложения
-
-### Автоматизация
-- **Python**: генерация отчётов, анализ багов
-- **Библиотеки**: openpyxl, python-docx, matplotlib
-- **Скрипты**: generate_report.py, analyze_bugs.py
+### Qualitative metrics
+- All high-impact defects are documented.
+- Defects include supporting evidence where available.
+- Stakeholder-facing report is prepared.
+- Improvement recommendations are documented.
 
 ---
 
-## ⚠️ Риски и митигация
+## 🗓 Test plan
 
-### Риск 1: Неполные требования
-**Вероятность**: Высокая  
-**Влияние**: Среднее  
-**Митигация**: Использовать exploratory testing, документировать предположения
+### Iteration 1 — baseline functional testing
+**Duration:** 5 days  
+**Focus:** navigation, authentication, editor, billing  
+**Result:** 150 test cases, 30 defects
 
-### Риск 2: Нестабильная тестовая среда
-**Вероятность**: Средняя  
-**Влияние**: Высокое  
-**Митигация**: Фиксировать состояние среды, повторять тесты
+### Iteration 2 — integrations and mobile
+**Duration:** 3 days  
+**Focus:** VK, Google, POS integrations and mobile version  
+**Result:** 50 test cases, 12 defects
 
-### Риск 3: Недоступность интеграций
-**Вероятность**: Средняя  
-**Влияние**: Высокое  
-**Митигация**: Использовать моки, тестировать доступные интеграции
+### Iteration 3 — TV and migration
+**Duration:** 2 days  
+**Focus:** TV application and data migration  
+**Result:** 28 test cases, 3 defects
 
-### Риск 4: Нехватка времени
-**Вероятность**: Низкая  
-**Влияние**: Среднее  
-**Митигация**: Приоритизировать тест-кейсы по риску
-
----
-
-## 📈 Критерии приёмки
-
-### Продукт готов к релизу, если:
-- ✅ Pass Rate ≥75%
-- ✅ 0 Critical-багов в основных сценариях
-- ✅ Все High-баги задокументированы и приоритизированы
-- ✅ Отчёт подготовлен для стейкхолдеров
-
-### Продукт НЕ готов к релизу, если:
-- ❌ Pass Rate <70%
-- ❌ Есть Critical-баги в основных сценариях
-- ❌ Интеграции не работают
-- ❌ Мобильная версия непригодна
+### Iteration 4 — reporting
+**Duration:** 2 days  
+**Focus:** analysis, reporting, recommendations  
+**Result:** final report, 45 defects
 
 ---
 
-**Результат**: Продукт **не готов** к релизу (Pass Rate 77.6%, но 18 High-багов, включая критические интеграции и мобильную версию).
+## 🛠 Tools
+
+### Testing
+- **Browsers:** Chrome 151, Yandex Browser 26.6
+- **Mobile:** iOS Safari, Android Chrome
+- **TV:** TCL Smart TV, `prtv-2.0.102`
+- **DevTools:** Chrome DevTools, Network tab, Console
+
+### Defect tracking
+- **System:** custom PRD — Product Defect Report format
+- **Storage:** Excel + Google Drive for attachments
+- **Fields:** ID, title, severity, priority, steps, expected result, actual result, attachments
+
+### Automation
+- **Python:** reporting and defect analysis
+- **Libraries:** `openpyxl`, `python-docx`, `matplotlib`
+- **Scripts:** `generate_report.py`, `analyze_bugs.py`
+
+---
+
+## ⚠️ Risks and mitigation
+
+### Risk 1 — incomplete requirements
+**Probability:** High  
+**Impact:** Medium  
+**Mitigation:** exploratory testing and explicit assumption documentation.
+
+### Risk 2 — unstable test environment
+**Probability:** Medium  
+**Impact:** High  
+**Mitigation:** record environment state and repeat critical checks.
+
+### Risk 3 — unavailable integrations
+**Probability:** Medium  
+**Impact:** High  
+**Mitigation:** use mocks where available and test integrations that can be exercised safely.
+
+### Risk 4 — limited time
+**Probability:** Low  
+**Impact:** Medium  
+**Mitigation:** prioritize cases by product risk.
+
+---
+
+## 📈 Acceptance criteria
+
+### Product is ready for release if
+- ✅ Pass Rate ≥75%.
+- ✅ No High-severity release blockers remain in core scenarios.
+- ✅ All remaining High issues are documented and prioritized.
+- ✅ Stakeholder report is prepared.
+
+### Product is NOT ready for release if
+- ❌ Pass Rate <70%.
+- ❌ Release-blocking defects remain in core scenarios.
+- ❌ Integrations are unusable.
+- ❌ Mobile version is not practically usable.
+
+---
+
+**Result:** the product was assessed as **not ready** for release. Pass Rate was 77.6%, but 18 High-severity defects remained, including high-impact integration and mobile issues.
