@@ -18,7 +18,7 @@
 ## 📌 What this is
 
 A **real QA engagement** for a SaaS platform used to build Smart TV slideshows.  
-Not a tutorial project and not a generic template — this repository documents **full practical QA work** with a real product team.
+Not a tutorial project and not a generic template — this repository documents practical QA work with a real product team.
 
 **Period:** July–August 2026  
 **Role:** QA Engineer, sole tester  
@@ -158,21 +158,23 @@ Authentication:   ████                 2 defects (4%)
 Other:            ███████████████████  15 defects (34%)
 ```
 
-### Root Cause Analysis
-**Why were integrations so defect-heavy?**
-- Missing backend validation
-- Incorrect OAuth-token handling
-- No mocks available for integration testing
+### Working hypotheses from the observed failure patterns
+These are investigation hypotheses, not claimed source-code root causes unless directly supported by evidence.
 
-**Why was mobile quality poor?**
-- Responsive design was not treated as a first-class development target
-- No dedicated mobile QA coverage before this run
-- Styles did not adapt reliably at ≤768 px
+**Integration failures may be related to:**
+- missing backend validation;
+- OAuth-token handling;
+- the absence of mocks for isolated integration testing.
 
-**Why did the TV app fail?**
-- API changes were not synchronized with the TV client
-- No automated TV regression coverage
-- TV checks had not been executed regularly
+**Mobile failures point toward:**
+- responsive behavior not being treated as a first-class product surface;
+- insufficient dedicated mobile coverage before this run;
+- styles that did not adapt reliably at ≤768 px.
+
+**TV failures may be related to:**
+- API/client contract drift;
+- missing automated TV regression coverage;
+- irregular TV-side regression execution.
 
 [Read the detailed analysis → ANALYTICS/root-cause-analysis.md]
 
@@ -199,7 +201,7 @@ The project used a **Severity × Priority** model:
 
 ```text
 PLANNING/          # Test strategy and planning
-ANALYTICS/         # Root-cause analysis and conclusions
+ANALYTICS/         # Investigation hypotheses and conclusions
 SCRIPTS/           # Python reporting automation
 README.md          # Case overview
 ```
@@ -208,9 +210,8 @@ The artifacts are intended to answer not only *what* was tested, but *why* scope
 
 ---
 
-## 🎓 Skills demonstrated
+## 🧭 What this case covers
 
-### Hard Skills
 - [x] Test design: equivalence classes, boundaries, pairwise
 - [x] Test cases with preconditions and expected results
 - [x] Defect localization and reproducible bug reporting
@@ -218,42 +219,31 @@ The artifacts are intended to answer not only *what* was tested, but *why* scope
 - [x] Integration testing across OAuth and REST-backed flows
 - [x] Cross-platform testing across Web / Mobile / TV
 - [x] Reporting automation with Python
-
-### Soft Skills
-- [x] Risk-based prioritization
-- [x] Communication with development through actionable defect reports
-- [x] Working with incomplete requirements
-- [x] Systems thinking: looking for defect patterns rather than isolated symptoms
-- [x] Business-impact reasoning
+- [x] Risk-based prioritization and business-impact reasoning
+- [x] Working with incomplete requirements and broad product scope
 
 ---
 
 ## 💡 What I learned
 
 ### Technical insights
-1. **Integrations are the most fragile area.** 22% of the defects were related to external services; mocks and contract testing would reduce this risk.
+1. **Integrations are the most fragile area in this run.** 22% of the documented defects were related to external services; mocks and contract testing would reduce this risk.
 2. **Mobile is effectively a separate product surface.** Desktop responsiveness alone is not a substitute for dedicated mobile testing.
 3. **TV requires its own testing approach.** Debugging and iteration differ significantly from browser-based products.
 
 ### Process insights
-1. **Earlier testing reduces rework.** The integration defects could have been detected closer to implementation.
-2. **Reporting automation matters.** Python scripts saved approximately 10 hours of manual reporting work.
+1. **Earlier testing reduces rework.** Several integration defects could likely have been detected closer to implementation.
+2. **Reporting automation matters.** Python scripts reduced repetitive report preparation during the engagement.
 3. **Documentation prevents coverage gaps.** Structured cases helped keep a wide product surface under control.
 
 ---
 
-## 🚀 How to use this case
+## 🗺 Repository map
 
-### For recruiters / team leads
-1. Start with **README.md** for the overview.
-2. Open **ANALYTICS/** for deeper reasoning.
-3. Review **PLANNING/** for the testing strategy.
-4. Review **SCRIPTS/** for reporting automation.
-
-### For other QA engineers
-1. Review **PLANNING/** for risk-based scope decisions.
-2. Review **SCRIPTS/** for report automation.
-3. Review **ANALYTICS/** for RCA structure.
+1. Start with **README.md** for the execution snapshot and key findings.
+2. Open **PLANNING/** for scope, test strategy, and prioritization.
+3. Open **ANALYTICS/** for investigation notes and pattern analysis.
+4. Open **SCRIPTS/** for the reporting automation used around the case.
 
 ---
 
