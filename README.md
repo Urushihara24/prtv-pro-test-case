@@ -9,9 +9,9 @@
   <img src="https://img.shields.io/badge/Python-Reporting_Automation-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
 </p>
 
-| Coverage | Execution | Result |
+| Coverage | Execution snapshot | Result |
 |---|---|---|
-| 18 of 20 modules across 5 environments | 228 test cases executed | 45 defects documented with business impact and supporting analysis |
+| 18 of 20 modules across 5 environments | 228-case suite: 204 completed, 5 blocked, 19 not tested | 45 defects documented with business impact and supporting analysis |
 
 **Start here:** [planning](PLANNING/) · [analytics](ANALYTICS/) · [test scripts](SCRIPTS/) · [key findings](#-key-findings)
 
@@ -53,8 +53,10 @@ A SaaS platform for restaurants, hotels, and retail businesses to create digital
 ### Test coverage
 | Metric | Value |
 |---|---|
-| Test cases written | 228 |
-| Test cases executed | 228, 100% |
+| Test cases in suite | 228 |
+| Completed with Pass / Fail | 204 |
+| Blocked | 5 |
+| Not tested | 19 |
 | Modules covered | 18 of 20, 90% |
 | Environments tested | 5: Chrome, Yandex Browser, Mobile iOS, Mobile Android, TV |
 
