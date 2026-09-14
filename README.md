@@ -1,6 +1,6 @@
-# 🎯 PRTV.pro — Comprehensive QA Case
+# 🎯 PRTV.pro — Commercial QA Project
 
-> Release-readiness assessment of a production SaaS platform across web, mobile and Android TV, with coverage of billing, integrations and data migration.
+> Paid commercial QA engagement covering release readiness across web, mobile and Android TV, including billing, integrations and data migration.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Web-Chrome_DevTools-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Chrome DevTools">
@@ -15,10 +15,9 @@
 
 **Start here:** [planning](PLANNING/) · [analytics](ANALYTICS/) · [test scripts](SCRIPTS/) · [key findings](#-key-findings)
 
-## 📌 What this is
+## 📌 Project summary
 
-A **real QA engagement** for a SaaS platform used to build Smart TV slideshows.  
-Not a tutorial project and not a generic template — this repository documents practical QA work with a real product team.
+This repository documents production QA work delivered to a real product team for a SaaS platform used to build Smart TV slideshows.
 
 **Period:** July–August 2026  
 **Role:** QA Engineer, sole tester  
@@ -205,14 +204,14 @@ The project used a **Severity × Priority** model:
 PLANNING/          # Test strategy and planning
 ANALYTICS/         # Investigation hypotheses and conclusions
 SCRIPTS/           # Python reporting automation
-README.md          # Case overview
+README.md          # Project overview
 ```
 
 The artifacts are intended to answer not only *what* was tested, but *why* scope and priorities were selected.
 
 ---
 
-## 🧭 What this case covers
+## 🧭 QA scope and delivered work
 
 - [x] Test design: equivalence classes, boundaries, pairwise
 - [x] Test cases with preconditions and expected results
@@ -226,14 +225,14 @@ The artifacts are intended to answer not only *what* was tested, but *why* scope
 
 ---
 
-## 💡 What I learned
+## 💡 Technical and process observations
 
-### Technical insights
-1. **Integrations are the most fragile area in this run.** 22% of the documented defects were related to external services; mocks and contract testing would reduce this risk.
+### Technical observations
+1. **Integrations were the most defect-heavy area in this run.** 22% of the documented defects were related to external services; mocks and contract testing would reduce this risk.
 2. **Mobile is effectively a separate product surface.** Desktop responsiveness alone is not a substitute for dedicated mobile testing.
 3. **TV requires its own testing approach.** Debugging and iteration differ significantly from browser-based products.
 
-### Process insights
+### Process observations
 1. **Earlier testing reduces rework.** Several integration defects could likely have been detected closer to implementation.
 2. **Reporting automation matters.** Python scripts reduced repetitive report preparation during the engagement.
 3. **Documentation prevents coverage gaps.** Structured cases helped keep a wide product surface under control.
@@ -245,13 +244,13 @@ The artifacts are intended to answer not only *what* was tested, but *why* scope
 1. Start with **README.md** for the execution snapshot and key findings.
 2. Open **PLANNING/** for scope, test strategy, and prioritization.
 3. Open **ANALYTICS/** for investigation notes and pattern analysis.
-4. Open **SCRIPTS/** for the reporting automation used around the case.
+4. Open **SCRIPTS/** for the reporting automation used around the project.
 
 ---
 
 ## 📄 License
 
-MIT License — materials may be reused for educational purposes.
+MIT License — see [LICENSE](LICENSE) for reuse terms.
 
 ---
 
@@ -263,8 +262,8 @@ MIT License — materials may be reused for educational purposes.
 
 ## 🙏 Acknowledgements
 
-Thanks to the PRTV.pro product team for the opportunity to perform the testing and document the experience.
+Thanks to the PRTV.pro product team for the opportunity to perform the testing and document the engagement.
 
 ---
 
-*This repository documents a real QA engagement rather than a generic template. Questions and feedback are welcome.*
+*This repository documents paid commercial QA work delivered against a real product.*
