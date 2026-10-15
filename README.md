@@ -256,7 +256,7 @@ MIT License — see [LICENSE](LICENSE) for reuse terms.
 
 **Author:** Vsevolod  
 **Date:** August 2026  
-**Contact:** @urushihara24
+**Contact:** @vsevolod_qa
 
 ---
 
